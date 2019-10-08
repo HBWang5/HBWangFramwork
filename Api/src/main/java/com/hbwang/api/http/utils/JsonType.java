@@ -47,7 +47,7 @@ public class JsonType<T> {
 //        if (modelBase.getStatus().equals("SUCCEED")) {
         mHBWangCallbackNet.onSucceed(obj);
 //        } else {
-//            tTimaCallbackNet.onFailure(modelBase.getErrorMessage());
+//            mHBWangCallbackNet.onFailure(modelBase.getErrorMessage());
 //        }
 
 
