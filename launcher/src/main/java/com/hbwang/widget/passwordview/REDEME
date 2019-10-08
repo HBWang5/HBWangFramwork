@@ -1,6 +1,6 @@
 
 
-   <com.tima.bluetoothcarparking.widget.passwordview.PassWordLayout
+   <com.***.PassWordLayout
               android:id="@+id/dialog_select_input_pin"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"

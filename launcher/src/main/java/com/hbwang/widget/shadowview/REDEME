@@ -1,6 +1,6 @@
 
 
-   <com.tima.bluetoothcarparking.widget.carparkingview.CarParkingView
+   <com.***.ShadowView
          android:layout_width="match_parent"
          android:layout_weight="1"
          android:id="@+id/parking_start_img"
