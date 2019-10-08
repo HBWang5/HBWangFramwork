@@ -40,10 +40,6 @@ allprojects {
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.squareup.retrofit:retrofit:2.0.0-beta1'
-    implementation 'com.squareup.retrofit:converter-gson:2.0.0-beta1'
-    implementation 'com.google.code.gson:gson:2.8.2'
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
@@ -52,8 +48,14 @@ dependencies {
     implementation files('libs/ormlite-core-4.48.jar')
     api project(':ViewBindLib')
 
-    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
-    implementation 'com.squareup.okio:okio:1.15.0'
 
-    implementation 'pub.devrel:easypermissions:2.0.0'
+
+    implementation rootProject.ext.dependencies.recyclerview
+    implementation rootProject.ext.dependencies.retrofit
+    implementation rootProject.ext.dependencies.retrofit_gson
+    implementation rootProject.ext.dependencies.gson
+    implementation rootProject.ext.dependencies.okhttp
+    implementation rootProject.ext.dependencies.okio
+    implementation rootProject.ext.dependencies.easypermissions
+
 }
