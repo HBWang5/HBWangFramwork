@@ -1,0 +1,11 @@
+
+
+   <com.tima.bluetoothcarparking.widget.carparkingview.CarParkingView
+         android:layout_width="match_parent"
+         android:layout_weight="1"
+         android:id="@+id/parking_start_img"
+         app:waveCenterIcon="@mipmap/park_icon_control_move"
+         app:waveColor="@color/colorAccent"
+         android:layout_height="wrap_content" />
+
+

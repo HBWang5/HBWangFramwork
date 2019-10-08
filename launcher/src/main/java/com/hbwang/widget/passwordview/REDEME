@@ -1,0 +1,20 @@
+
+
+   <com.tima.bluetoothcarparking.widget.passwordview.PassWordLayout
+              android:id="@+id/dialog_select_input_pin"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="44px"
+              app:box_draw_type="rect"
+              app:interval_width="4dp"
+              app:item_height="35dp"
+              app:item_width="35dp"
+              app:pass_inputed_type="stars"
+              app:pass_leng="six" />
+
+
+
+
+              PassWordLayout.pwdChangeListener
+
+
