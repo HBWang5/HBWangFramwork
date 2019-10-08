@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="player_pause" type="id"/>
+    <item name="pro_volume" type="id"/>
+    <item name="pro_brightness" type="id"/>
+    <item name="player_full" type="id"/>
+</resources>

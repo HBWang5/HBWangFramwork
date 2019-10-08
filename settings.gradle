@@ -1,0 +1,6 @@
+include ':launcher', ':Api', ':player', ':PlugInLib', ':ViewBindLib', ':MessageBus', ':Hotfix', ':players', ':players', ':bridge'
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+  settingsDir.parentFile,
+  'flutter_module\\.android\\include_flutter.groovy'
+))
