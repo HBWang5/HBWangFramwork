@@ -1,19 +1,26 @@
 package com.hbwang.api.base.app;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 
 import com.hbwang.api.config.Config;
-import com.hbwang.api.http.sslcontext.HBWangSSLContext;
-import com.squareup.okhttp.OkHttpClient;
 import com.hbwang.api.ThreadPoolExecutor.Factory.ThreadPoolExecutorFactoryImpl.ThreadPoolExecutorFactoryImpl;
 import com.hbwang.api.ThreadPoolExecutor.Proxy.IThreadPoolExecutorProxy;
 import com.hbwang.api.http.ApiService;
+import com.hbwang.api.net.converter.HBWangConverterFactory;
 
+import java.net.Proxy;
+import java.security.cert.X509Certificate;
 import java.util.concurrent.TimeUnit;
 
 
-import retrofit.Retrofit;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
 
 
 /**
@@ -61,6 +68,7 @@ public class ApiApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mApplication = this;
+        CrashHandler.getInstance(this);
         setUrlIp("http://chaxun.cx580.com:9008/");                              //初始化域名
         ThreadPoolExecutorFactoryImpl threadPoolExecutorFactory = new ThreadPoolExecutorFactoryImpl();
         produce = threadPoolExecutorFactory.produce(Config.SINGLE_THREAD_EXECUTOR);                //获取线程池
@@ -80,14 +88,39 @@ public class ApiApplication extends Application {
      */
     private static ApiService getService(String HOST_URL) {
         OkHttpClient okHttpClient = new OkHttpClient();
-        okHttpClient.setConnectTimeout(30, TimeUnit.SECONDS);
-        okHttpClient.setReadTimeout(10, TimeUnit.SECONDS);
-        okHttpClient.setWriteTimeout(30, TimeUnit.SECONDS);
-        new HBWangSSLContext().ignoreCertificate(okHttpClient);
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.connectTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .proxy(Proxy.NO_PROXY);
+        X509TrustManager x509TrustManager = new X509TrustManager() {
+            @SuppressLint("TrustAllX509TrustManager")
+            @Override
+            public void checkClientTrusted(X509Certificate[] chain, String authType) {
+            }
+
+            @SuppressLint("TrustAllX509TrustManager")
+            @Override
+            public void checkServerTrusted(X509Certificate[] chain, String authType) {
+            }
+
+            @Override
+            public X509Certificate[] getAcceptedIssuers() {
+                return new X509Certificate[]{};
+            }
+        };
+
+        SSLContext sslContext;
+        try {
+            sslContext = SSLContext.getInstance("SSL");
+            sslContext.init(null, new TrustManager[]{x509TrustManager}, new java.security.SecureRandom());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(HBWangConverterFactory.create())
                 .client(okHttpClient)
                 .baseUrl(HOST_URL)
-//                .addConverterFactory(GsonConverterFactory.create())
                 .build();
         return retrofit.create(ApiService.class);
 

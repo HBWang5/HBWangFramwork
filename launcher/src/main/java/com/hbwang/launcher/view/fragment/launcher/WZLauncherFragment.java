@@ -44,6 +44,8 @@ public class WZLauncherFragment extends BaseFragment<ILauncherFragmentUI,Launche
         playerVideoManager.playMedia("http://vjs.zencdn.net/v/oceans.mp4");
         hbwangMediaController.prepare();
         hbwangMediaController.start();
+
+
     }
 
     @Override

@@ -19,14 +19,17 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            buildConfigField "boolean", "ISDEBUG", "false"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         uat {
             minifyEnabled false
+            buildConfigField "boolean", "ISDEBUG", "true"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
             minifyEnabled false
+            buildConfigField "boolean", "ISDEBUG", "true"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -55,7 +58,7 @@ dependencies {
     implementation rootProject.ext.dependencies.retrofit_gson
     implementation rootProject.ext.dependencies.gson
     implementation rootProject.ext.dependencies.okhttp
-    implementation rootProject.ext.dependencies.okio
+//    implementation rootProject.ext.dependencies.okio
     implementation rootProject.ext.dependencies.easypermissions
 
 }

@@ -4,21 +4,21 @@ ext {
 
     dependVersion = [
             recyclerview   : "28.0.0",
-            retrofit       : "2.0.0-beta1",
-            retrofit_gson  : "2.0.0-beta1",
+            retrofit       : "2.3.0",
+            converterGson  : "2.3.0",
             gson           : "2.8.2",
-            okhttp         : "3.11.0",
-            okio           : "1.15.0",
+            okhttp         : "4.4.0",
+//            okio           : "1.7.0",
             easypermissions: "2.0.0",
     ]
 
     dependencies = [
             recyclerview   : "com.android.support:recyclerview-v7:${dependVersion.recyclerview}",
-            retrofit       : "com.squareup.retrofit:retrofit:${dependVersion.retrofit}",
-            retrofit_gson  : "com.squareup.retrofit:converter-gson:${dependVersion.retrofit_gson}",
+            retrofit       : "com.squareup.retrofit2:retrofit:${dependVersion.retrofit}",
+            retrofit_gson  : "com.squareup.retrofit2:converter-gson:${dependVersion.converterGson}",
             gson           : "com.google.code.gson:gson:${dependVersion.gson}",
             okhttp         : "com.squareup.okhttp3:okhttp:${dependVersion.okhttp}",
-            okio           : "com.squareup.okio:okio:${dependVersion.okio}",
+//            okio           : "com.squareup.okio:okio:${dependVersion.okio}",
             easypermissions: "pub.devrel:easypermissions:${dependVersion.easypermissions}",
     ]
 
